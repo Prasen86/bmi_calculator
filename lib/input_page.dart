@@ -190,11 +190,12 @@ class _InputPageState extends State<InputPage> {
           ),
           CustomButton(
             label: "CALCULATE",
-            ontap: () {},
+            ontap: () {
+              Navigator.pushNamed(context, '/result');
+            },
           )
         ],
       ),
     );
   }
 }
-

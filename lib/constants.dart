@@ -15,6 +15,11 @@ const TextStyle styleNumbers = TextStyle(
   fontWeight: FontWeight.w900,
 );
 
+const headerTextStyle = TextStyle(
+  fontSize: 20.0,
+  fontWeight: FontWeight.bold,
+);
+
 const buttonTextStyle = TextStyle(
   fontSize: 30.0,
   fontWeight: FontWeight.bold,
