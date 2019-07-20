@@ -5,6 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'constants.dart';
 
 enum Gender { male, female }
+int height = 180;
 
 class InputPage extends StatefulWidget {
   @override
@@ -65,6 +66,38 @@ class _InputPageState extends State<InputPage> {
           Expanded(
             child: ReusableCard(
               colour: activeCardColor,
+              cardChild: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text("HEIGHT"),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.baseline,
+                    textBaseline: TextBaseline.alphabetic,
+                    children: <Widget>[
+                      Text(
+                        height.toString(),
+                        style: styleNumbers,
+                      ),
+                      Text(
+                        "cm",
+                      ),
+                    ],
+                  ),
+                  Slider(
+                    value: height.toDouble(),
+                    max: 220.0,
+                    min: 120.0,
+                    activeColor: activeSliderColor,
+                    inactiveColor: inactiveSliderColor,
+                    onChanged: (double newHeight) {
+                      setState(() {
+                        height = newHeight.toInt();
+                      });
+                    },
+                  )
+                ],
+              ),
             ),
           ),
           Expanded(
