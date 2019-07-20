@@ -5,6 +5,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'constants.dart';
 import 'round_iconbutton.dart';
 import 'custom_button.dart';
+import 'bmi_calculate.dart';
+import 'result_page.dart';
 
 enum Gender { male, female }
 
@@ -191,7 +193,23 @@ class _InputPageState extends State<InputPage> {
           CustomButton(
             label: "CALCULATE",
             ontap: () {
-              Navigator.pushNamed(context, '/result');
+              BmiCalculate bmicalculate =
+                  BmiCalculate(height: height, weight: weight);
+              String bmi = bmicalculate.getBmi();
+              String result = bmicalculate.getResult();
+              String interpret = bmicalculate.getInterpret();
+              print(interpret);
+              print(result);
+              print(bmi);
+
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => ResultPage(
+                            result: result,
+                            bmi: bmi,
+                            interpret: interpret,
+                          )));
             },
           )
         ],

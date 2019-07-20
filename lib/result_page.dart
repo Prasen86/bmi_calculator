@@ -4,9 +4,12 @@ import 'reusable_card.dart';
 import 'custom_button.dart';
 
 class ResultPage extends StatelessWidget {
-  String result;
-  String bmi;
-  String interpretation;
+  final String result;
+  final String bmi;
+  final String interpret;
+
+  ResultPage(
+      {@required this.result, @required this.bmi, @required this.interpret});
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +43,7 @@ class ResultPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     Text(
-                      "NORMAL",
+                      result,
                       style: TextStyle(
                         color: Colors.green,
                         fontSize: 20.0,
@@ -48,11 +51,11 @@ class ResultPage extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      "180",
+                      bmi,
                       style: styleNumbers,
                     ),
                     Text(
-                      "Interpretation",
+                      interpret,
                       style: headerTextStyle,
                     )
                   ],
