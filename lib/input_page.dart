@@ -3,9 +3,10 @@ import 'reusable_card.dart';
 import 'icon_widget.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'constants.dart';
+import 'round_iconbutton.dart';
+import 'custom_button.dart';
 
 enum Gender { male, female }
-int height = 180;
 
 class InputPage extends StatefulWidget {
   @override
@@ -14,6 +15,9 @@ class InputPage extends StatefulWidget {
 
 class _InputPageState extends State<InputPage> {
   Gender selectedGender;
+  int height = 180;
+  int weight = 60;
+  int age = 20;
 
   @override
   Widget build(BuildContext context) {
@@ -106,24 +110,91 @@ class _InputPageState extends State<InputPage> {
                 Expanded(
                   child: ReusableCard(
                     colour: activeCardColor,
+                    cardChild: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text("AGE"),
+                        Text(
+                          age.toString(),
+                          style: styleNumbers,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            RoundIconButton(
+                              icon: FontAwesomeIcons.plus,
+                              onpressed: () {
+                                setState(() {
+                                  age++;
+                                });
+                              },
+                            ),
+                            SizedBox(
+                              width: 10.0,
+                            ),
+                            RoundIconButton(
+                              icon: FontAwesomeIcons.minus,
+                              onpressed: () {
+                                setState(() {
+                                  age--;
+                                });
+                              },
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
                   ),
                 ),
                 Expanded(
                   child: ReusableCard(
                     colour: activeCardColor,
+                    cardChild: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text("WEIGHT"),
+                        Text(
+                          weight.toString(),
+                          style: styleNumbers,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            RoundIconButton(
+                              icon: FontAwesomeIcons.plus,
+                              onpressed: () {
+                                setState(() {
+                                  weight++;
+                                });
+                              },
+                            ),
+                            SizedBox(
+                              width: 10.0,
+                            ),
+                            RoundIconButton(
+                              icon: FontAwesomeIcons.minus,
+                              onpressed: () {
+                                setState(() {
+                                  weight--;
+                                });
+                              },
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
                   ),
                 )
               ],
             ),
           ),
-          Container(
-            margin: EdgeInsets.all(10.0),
-            color: calcButtonColor,
-            width: double.infinity,
-            height: calcButtonHeight,
+          CustomButton(
+            label: "CALCULATE",
+            ontap: () {},
           )
         ],
       ),
     );
   }
 }
+
